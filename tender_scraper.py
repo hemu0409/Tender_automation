@@ -37,7 +37,6 @@ try:
             rows = driver.find_elements(By.XPATH, "//table[@id='table']/tbody/tr")
             row = rows[i]
 
-            # Try to find a link in any <td>
             link_found = False
             for td in row.find_elements(By.TAG_NAME, "td"):
                 try:
@@ -74,7 +73,8 @@ try:
             time.sleep(2)
 
 except Exception as e:
-    print(f"❌ Top-level error: {e}")
+    print(f" Top-level error: {e}")
 
 driver.quit()
+
 
