@@ -24,14 +24,23 @@ A Python-based automation tool to download, extract, and analyze tender BOQ docu
 ## 📂 Project Structure
 
 tender_automation/ 
+
 ├── downloads/ # Folder where ZIP files are saved after downloading. 
+
 ├── extracted/ # Folder where BOQ Excel files are saved after extraction. 
+
 ├── output/ # Folder where the final DI Pipes Excel report is saved. 
-├── check_boq.py # Script to process BOQ files and check for item code 8329. 
+
+├── check_boq.py # Script to process BOQ files and check for item code 8329.
+
 ├── tender_scraper.py # Main script to automate the scraping and downloading of tenders. 
+
 ├── run.sh # Shell script to run the entire automation process. 
+
 ├── tender_scraper.log # Log file generated during script execution. 
+
 ├── chromedriver.exe # ChromeDriver executable needed for Selenium. 
+
 ├── README.md # Project documentation (this file).
 
 ---
@@ -56,3 +65,4 @@ The **Tender Automation Project** is designed to streamline the process of scrap
 Feel free to use, improve, or contribute to this project. Contributions are welcome, and feedback is appreciated. Together, we can make this tool even better!
 
 Happy coding! 🚀
+
