@@ -21,7 +21,7 @@ def contains_item_8329(excel_path):
             if df.astype(str).apply(lambda x: x.str.contains("8329")).any().any():
                 return True
     except Exception as e:
-        print(f"❌ Error reading {excel_path}: {e}")
+        print(f" Error reading {excel_path}: {e}")
     return False
 
 for zip_file in os.listdir(DOWNLOAD_DIR):
@@ -36,7 +36,7 @@ for zip_file in os.listdir(DOWNLOAD_DIR):
         with zipfile.ZipFile(zip_path, 'r') as zip_ref:
             zip_ref.extractall(temp_extract_path)
     except Exception as e:
-        print(f"❌ Error unzipping {zip_file}: {e}")
+        print(f" Error unzipping {zip_file}: {e}")
         shutil.rmtree(temp_extract_path)
         continue
 
@@ -60,14 +60,15 @@ for zip_file in os.listdir(DOWNLOAD_DIR):
 
     if not found_8329:
         os.remove(zip_path)
-        print(f"🗑️ Deleted {zip_file} (no 8329)")
+        print(f" Deleted {zip_file} (no 8329)")
 
     else:
-        print(f"✅ Found 8329 in {zip_file}")
+        print(f" Found 8329 in {zip_file}")
 
 if found_entries:
     df = pd.DataFrame(found_entries)
     df.to_excel(OUTPUT_FILE, index=False)
-    print(f"\n📄 Saved results to {OUTPUT_FILE}")
+    print(f"\n Saved results to {OUTPUT_FILE}")
 else:
-    print("\n⚠️ No BOQs with 8329 found.")
+    print("\n No BOQs with 8329 found.")
+
