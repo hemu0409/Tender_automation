@@ -25,12 +25,12 @@ options.add_argument("--start-maximized")
 driver = webdriver.Chrome(options=options)
 
 driver.get("https://eproc.rajasthan.gov.in/nicgep/app?page=FrontEndTendersByOrganisation&service=page")
-print("⚠️ Manually solve CAPTCHA, then search/filter for PHED - C.E. (Project), Jodhpur.")
-input("✅ Once tender list is visible, press ENTER to start downloading ZIPs...")
+print(" Manually solve CAPTCHA, then search/filter for PHED - C.E. (Project), Jodhpur.")
+input(" Once tender list is visible, press ENTER to start downloading ZIPs...")
 
 try:
     rows = driver.find_elements(By.XPATH, "//table[@id='table']/tbody/tr")
-    print(f"📄 Found {len(rows)} rows in tender table.")
+    print(f" Found {len(rows)} rows in tender table.")
 
     for i in range(min(48, len(rows))): 
         try:
@@ -43,7 +43,7 @@ try:
                 try:
                     a = td.find_element(By.TAG_NAME, "a")
                     tender_title = a.text.strip().replace("/", "_").replace(" ", "_")
-                    print(f"🔍 Opening tender: {tender_title}")
+                    print(f" Opening tender: {tender_title}")
                     a.click()
                     link_found = True
                     break
@@ -51,7 +51,7 @@ try:
                     continue
 
             if not link_found:
-                print(f"⚠️ No link found in row {i+1}, skipping.")
+                print(f" No link found in row {i+1}, skipping.")
                 continue
 
             WebDriverWait(driver, 10).until(
@@ -59,14 +59,14 @@ try:
             )
             zip_link = driver.find_element(By.XPATH, "//a[contains(text(),'Download as zip file')]")
             zip_link.click()
-            print(f"✅ Downloaded ZIP for: {tender_title}")
+            print(f" Downloaded ZIP for: {tender_title}")
 
-            time.sleep(5)  # Wait for download to complete
+            time.sleep(5)  
             driver.back()
             time.sleep(2)
 
         except Exception as e:
-            print(f"⚠️ Error on row {i+1}: {e}")
+            print(f" Error on row {i+1}: {e}")
             try:
                 driver.back()
             except:
@@ -77,3 +77,4 @@ except Exception as e:
     print(f"❌ Top-level error: {e}")
 
 driver.quit()
+
